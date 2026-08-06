@@ -21,7 +21,16 @@ export function PipelineView({ enquiries, selectedId, onSelect, theme }) {
             <div className={styles.colCards}>
               {items.length === 0
                 ? <div className={styles.emptyCol}>No enquiries</div>
-                : items.map((enq) => <EnquiryCard key={enq._id} enquiry={enq} isSelected={enq._id === selectedId} onClick={(rect) => onSelect(enq._id, rect)} theme={theme} />)}
+                : items.map((enq) => (
+                    <EnquiryCard
+                      key={enq._id}
+                      enquiry={enq}
+                      isSelected={enq._id === selectedId}
+                      onClick={(rect) => onSelect(enq._id, rect)}
+                      theme={theme}
+                    />
+                  ))
+              }
             </div>
           </div>
         );
