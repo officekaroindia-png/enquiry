@@ -16,29 +16,29 @@ export const STAGES = [
   {
     id: 'presentation', label: 'Presentation', short: 'Presentation', step: 3,
     color: {
-      light: { bg: '#FEF9C3', border: '#FDE047', text: '#854D0E', dot: '#EAB308' },
-      dark:  { bg: '#2D2200', border: '#854D0E', text: '#FDE047', dot: '#EAB308' },
+      light: { bg: '#FEFCE8', border: '#FACC15', text: '#713F12', dot: '#FACC15' },
+      dark:  { bg: '#2D2200', border: '#FACC15', text: '#FDE047', dot: '#FACC15' },
     },
   },
   {
     id: 'site_visit', label: 'Site Visit', short: 'Site Visit', step: 4,
     color: {
-      light: { bg: '#F3E8FF', border: '#C084FC', text: '#6B21A8', dot: '#A855F7' },
-      dark:  { bg: '#1E0A3C', border: '#6B21A8', text: '#C084FC', dot: '#A855F7' },
+      light: { bg: '#FFFBEB', border: '#F59E0B', text: '#92400E', dot: '#D97706' },
+      dark:  { bg: '#2D1A00', border: '#D97706', text: '#FCD34D', dot: '#D97706' },
     },
   },
   {
     id: 'commercial_offer', label: 'Commercial Offer', short: 'Commercial', step: 5,
     color: {
-      light: { bg: '#FFF7ED', border: '#FDBA74', text: '#C2410C', dot: '#F97316' },
-      dark:  { bg: '#2D1200', border: '#C2410C', text: '#FDBA74', dot: '#F97316' },
+      light: { bg: '#FFF4E6', border: '#FF8C00', text: '#C2410C', dot: '#FF8C00' },
+      dark:  { bg: '#2D1200', border: '#FF8C00', text: '#FDBA74', dot: '#FF8C00' },
     },
   },
   {
     id: 'order', label: 'Order', short: 'Order', step: 6,
     color: {
-      light: { bg: '#EDE9FE', border: '#A78BFA', text: '#5B21B6', dot: '#7C3AED' },
-      dark:  { bg: '#1A0A3C', border: '#5B21B6', text: '#A78BFA', dot: '#7C3AED' },
+      light: { bg: '#FFF1EE', border: '#FF4500', text: '#9A1E00', dot: '#FF4500' },
+      dark:  { bg: '#2D0A00', border: '#FF4500', text: '#FCA89A', dot: '#FF4500' },
     },
   },
   {
