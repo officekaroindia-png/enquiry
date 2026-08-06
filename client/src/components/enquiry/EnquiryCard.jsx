@@ -11,9 +11,9 @@ export function EnquiryCard({ enquiry, isSelected, onClick, theme }) {
   const lastActivity = enquiry.activities?.[enquiry.activities.length - 1];
 
   function handleClick(e) {
+    // Pass click position so detail panel can float near it
     const rect = e.currentTarget.getBoundingClientRect();
-    // Pass rect to parent — parent handles the id
-    onClick(rect);
+    onClick(enquiry._id, rect);
   }
 
   return (
