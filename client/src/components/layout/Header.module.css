@@ -1,0 +1,18 @@
+.header { height: var(--header-height); background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 12px; position: sticky; top: 0; z-index: 30; }
+.left { display: flex; align-items: center; gap: 12px; }
+.menuBtn { display: none; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-sm); color: var(--text-secondary); }
+.menuBtn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.title { font-size: 16px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
+.right { display: flex; align-items: center; gap: 8px; }
+.searchWrap { position: relative; display: flex; align-items: center; }
+.searchIcon { position: absolute; left: 10px; color: var(--text-muted); pointer-events: none; }
+.searchInput { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); padding: 7px 12px 7px 30px; font-size: 13px; width: 220px; outline: none; transition: border-color 0.1s, width 0.2s; }
+.searchInput:focus { border-color: var(--accent); width: 280px; }
+.searchInput::placeholder { color: var(--text-muted); }
+.iconBtn { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-sm); color: var(--text-secondary); background: var(--bg-tertiary); border: 1px solid var(--border-color); cursor: pointer; }
+.iconBtn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.iconBtn:disabled { opacity: 0.5; cursor: default; }
+.spinning { animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 768px) { .menuBtn { display: flex; } .searchInput { width: 140px; } }
+@media (max-width: 480px) { .searchWrap { display: none; } }

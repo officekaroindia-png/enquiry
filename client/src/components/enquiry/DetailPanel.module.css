@@ -1,0 +1,50 @@
+.panel { background: var(--bg-secondary); height: 100%; overflow-y: auto; display: flex; flex-direction: column; }
+.inner { display: flex; flex-direction: column; padding-bottom: 32px; }
+.head { display: flex; align-items: flex-start; justify-content: space-between; padding: 20px 20px 16px; gap: 12px; }
+.headIdentity { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.headName { font-size: 16px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
+.headCo { display: flex; align-items: center; gap: 4px; font-size: 12.5px; color: var(--text-secondary); margin-top: 2px; }
+.closeBtn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radius-sm); color: var(--text-muted); transition: background 0.1s; flex-shrink: 0; }
+.closeBtn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.stageRow { padding: 0 20px 14px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.progressWrap { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.bar { flex: 1; height: 5px; background: var(--bg-tertiary); border-radius: 99px; overflow: hidden; min-width: 60px; }
+.fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+.progressLabel { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.dots { display: flex; align-items: center; padding: 0 20px 16px; }
+.dotWrap { display: flex; align-items: center; flex: 1; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid; flex-shrink: 0; transition: all 0.2s; }
+.dotDone { opacity: 0.7; }
+.dotCur { width: 13px; height: 13px; }
+.dotLine { flex: 1; height: 2px; background: var(--border-color); }
+.section { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+.secTitle { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+.infoGrid { display: flex; flex-direction: column; gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; }
+.infoRow { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--bg-secondary); }
+.infoIcon { color: var(--text-muted); flex-shrink: 0; }
+.infoLabel { font-size: 12.5px; color: var(--text-secondary); min-width: 80px; }
+.infoVal { font-size: 13px; color: var(--text-primary); font-weight: 500; }
+.notesBox { background: var(--bg-tertiary); border-radius: var(--radius-md); padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+.notesLabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+.notesText { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+.timeline { display: flex; flex-direction: column; }
+.tlItem { display: flex; gap: 12px; align-items: flex-start; }
+.tlLeft { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 2px; }
+.tlIcon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tlLine { width: 1.5px; flex: 1; min-height: 12px; background: var(--border-color); margin: 4px 0; }
+.tlBody { flex: 1; padding-bottom: 14px; }
+.tlTitle { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.tlNote { font-size: 12.5px; color: var(--text-secondary); line-height: 1.5; margin-top: 3px; }
+.tlUser { display: block; font-size: 11px; color: var(--text-muted); margin-top: 2px; font-style: italic; }
+.tlTime { font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block; }
+.actionError { font-size: 12.5px; color: var(--danger-text); background: var(--danger-bg); padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--danger-border); }
+.actionRow { display: flex; flex-wrap: wrap; gap: 8px; }
+.lostBox { width: 100%; background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: var(--radius-md); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.lostWarn { font-size: 12.5px; font-weight: 500; color: var(--danger-text); }
+.lostBtns { display: flex; gap: 8px; justify-content: flex-end; }
+.closedBanner { margin: 16px 20px; border-radius: var(--radius-md); padding: 12px 16px; font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.closedWon { background: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border); }
+.closedLost { background: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); }
+
+.headNameRow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.headId { font-size: 11.5px; font-weight: 600; color: var(--accent-text); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 5px; padding: 2px 7px; letter-spacing: 0.02em; }
