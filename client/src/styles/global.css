@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:    #F8F9FA;
+  --bg-secondary:  #FFFFFF;
+  --bg-tertiary:   #F1F3F5;
+  --bg-hover:      #E9ECEF;
+  --text-primary:  #111827;
+  --text-secondary:#4B5563;
+  --text-muted:    #9CA3AF;
+  --border-color:  #E5E7EB;
+  --border-strong: #D1D5DB;
+  --accent:        #2563EB;
+  --accent-bg:     #EFF6FF;
+  --accent-text:   #1D4ED8;
+  --success-bg:    #ECFDF5;
+  --success-text:  #065F46;
+  --success-border:#6EE7B7;
+  --danger-bg:     #FEF2F2;
+  --danger-text:   #991B1B;
+  --danger-border: #FCA5A5;
+  --shadow-sm:     0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:     0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --shadow-lg:     0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --sidebar-width: 240px;
+  --header-height: 60px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+[data-theme='dark'] {
+  --bg-primary:    #0F1117;
+  --bg-secondary:  #1A1D27;
+  --bg-tertiary:   #242736;
+  --bg-hover:      #2E3248;
+  --text-primary:  #F3F4F6;
+  --text-secondary:#9CA3AF;
+  --text-muted:    #6B7280;
+  --border-color:  #2E3248;
+  --border-strong: #3D4464;
+  --accent:        #3B82F6;
+  --accent-bg:     #1E293B;
+  --accent-text:   #93C5FD;
+  --success-bg:    #022C22;
+  --success-text:  #6EE7B7;
+  --success-border:#065F46;
+  --danger-bg:     #2D0A0A;
+  --danger-text:   #FCA5A5;
+  --danger-border: #991B1B;
+  --shadow-sm:     0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md:     0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+  --shadow-lg:     0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.3);
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; font-size: 14px; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
