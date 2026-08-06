@@ -8,7 +8,13 @@ export function ListView({ enquiries, selectedId, onSelect, theme, emptyMessage 
   return (
     <div className={styles.list}>
       {enquiries.map((enq) => (
-        <EnquiryCard key={enq._id} enquiry={enq} isSelected={enq._id === selectedId} onClick={(rect) => onSelect(enq._id, rect)} theme={theme} />
+        <EnquiryCard
+          key={enq._id}
+          enquiry={enq}
+          isSelected={enq._id === selectedId}
+          onClick={(rect) => onSelect(enq._id, rect)}
+          theme={theme}
+        />
       ))}
     </div>
   );
