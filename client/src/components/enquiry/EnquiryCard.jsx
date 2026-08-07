@@ -1,4 +1,4 @@
-import { MapPin, Phone, Building2, Calendar, Hash } from 'lucide-react';
+import { MapPin, Phone, Building2, Calendar } from 'lucide-react';
 import { StageBadge } from '../ui';
 import { getStageById } from '../../data/stages';
 import { formatDate } from '../../utils/formatDate';
@@ -9,11 +9,11 @@ export function EnquiryCard({ enquiry, isSelected, onClick, theme }) {
   if (!stage) return null;
   const c = stage.color[theme];
   const lastActivity = enquiry.activities?.[enquiry.activities.length - 1];
+  const idNum = enquiry.enquiryId ? parseInt(enquiry.enquiryId.replace('ENQ-', ''), 10) : '?';
 
   function handleClick(e) {
-    // Pass click position so detail panel can float near it
     const rect = e.currentTarget.getBoundingClientRect();
-    onClick(enquiry._id, rect);
+    onClick(rect);
   }
 
   return (
@@ -27,21 +27,26 @@ export function EnquiryCard({ enquiry, isSelected, onClick, theme }) {
     >
       <div className={styles.colorStrip} />
       <div className={styles.body}>
+
         <div className={styles.top}>
-          <div className={styles.identity}>
-            <Avatar name={enquiry.name || enquiry.company || '?'} size={38} />
-            <div className={styles.nameBlock}>
-              <div className={styles.nameRow}>
-                <span className={styles.name}>{enquiry.name || enquiry.company || 'Unnamed'}</span>
-                {enquiry.enquiryId && (
-                  <span className={styles.enqId}>
-                    <Hash size={10} />{enquiry.enquiryId.replace('ENQ-', '')}
-                  </span>
-                )}
-              </div>
-              <span className={styles.company}><Building2 size={11} />{enquiry.company || '—'}</span>
-            </div>
+          {/* ID Circle instead of avatar */}
+          <div
+            className={styles.idCircle}
+            style={{ background: c.bg, color: c.text, border: `2px solid ${c.border}` }}
+          >
+            #{idNum}
           </div>
+
+          <div className={styles.nameBlock}>
+            <span className={styles.name}>
+              {enquiry.name || enquiry.company || 'Unnamed'}
+            </span>
+            <span className={styles.company}>
+              <Building2 size={11} />
+              {enquiry.company || '—'}
+            </span>
+          </div>
+
           <StageBadge stage={stage} theme={theme} />
         </div>
 
