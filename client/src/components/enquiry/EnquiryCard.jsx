@@ -1,5 +1,5 @@
 import { MapPin, Phone, Building2, Calendar, Hash } from 'lucide-react';
-import { Avatar, StageBadge } from '../ui';
+import { StageBadge } from '../ui';
 import { getStageById } from '../../data/stages';
 import { formatDate } from '../../utils/formatDate';
 import styles from './EnquiryCard.module.css';
