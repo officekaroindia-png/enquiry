@@ -6,47 +6,40 @@ export function FloatingDetail({ enquiry, theme, onClose, onLogActivity, onClose
   const panelRef = useRef(null);
 
   useEffect(() => {
-    if (!panelRef.current || !clickRect) return;
+    if (!panelRef.current) return;
 
     const panel = panelRef.current;
-    const panelH = 600; // approx panel height
     const panelW = 420;
-    const margin = 12;
-    const viewH = window.innerHeight;
+    const panelH = Math.min(panel.scrollHeight, window.innerHeight - 24);
     const viewW = window.innerWidth;
+    const viewH = window.innerHeight;
+    const margin = 12;
 
-    // Try to open to the RIGHT of the card first
-    let left = clickRect.right + margin;
-    let top = clickRect.top;
+    // Always open to the RIGHT of the sidebar+list area
+    // Try right side of clicked card first
+    let left = clickRect ? clickRect.right + margin : viewW - panelW - margin;
 
-    // If not enough space on right, open to LEFT
-    if (left + panelW > viewW) {
-      left = clickRect.left - panelW - margin;
+    // If not enough space on right, try left of card
+    if (left + panelW > viewW - margin) {
+      left = clickRect ? clickRect.left - panelW - margin : margin;
     }
 
-    // If still off screen, center horizontally
-    if (left < 0) {
-      left = Math.max(margin, (viewW - panelW) / 2);
-    }
+    // If still off screen, clamp
+    if (left < margin) left = margin;
+    if (left + panelW > viewW - margin) left = viewW - panelW - margin;
 
-    // Clamp top so panel doesn't go off bottom
-    if (top + panelH > viewH - margin) {
-      top = viewH - panelH - margin;
-    }
-
-    // Don't go above top
-    if (top < margin) top = margin;
+    // Vertically centered in viewport
+    const top = Math.max(margin, (viewH - panelH) / 2);
 
     panel.style.left = `${left}px`;
     panel.style.top = `${top}px`;
+    panel.style.maxHeight = `${viewH - 24}px`;
   }, [clickRect, enquiry?._id]);
 
-  // Close on backdrop click
   function handleBackdrop(e) {
     if (e.target === e.currentTarget) onClose();
   }
 
-  // Close on Escape
   useEffect(() => {
     function onKey(e) { if (e.key === 'Escape') onClose(); }
     window.addEventListener('keydown', onKey);
