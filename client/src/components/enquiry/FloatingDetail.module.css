@@ -1,42 +1,49 @@
+/* Dim backdrop — click outside to close */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 24px 12px 12px;
 }
 
+/* Panel — always on the RIGHT, vertically centered */
 .panel {
-  position: fixed;
   width: 420px;
+  max-height: calc(100vh - 24px);
   overflow-y: auto;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.15);
   z-index: 201;
   animation: popIn 0.15s ease;
+  flex-shrink: 0;
 }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.96) translateX(12px); }
+  to   { opacity: 1; transform: scale(1) translateX(0); }
 }
 
-@media (max-width: 860px) {
-  .backdrop { background: rgba(0,0,0,0.4); }
+/* Mobile — slide up from bottom */
+@media (max-width: 640px) {
+  .backdrop {
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
   .panel {
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-    max-height: 88vh !important;
+    width: 100%;
+    max-height: 88vh;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     animation: slideUp 0.2s ease;
   }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
 }
