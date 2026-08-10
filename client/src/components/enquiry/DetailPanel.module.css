@@ -11,6 +11,13 @@
 .bar { flex: 1; height: 5px; background: var(--bg-tertiary); border-radius: 99px; overflow: hidden; min-width: 60px; }
 .fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
 .progressLabel { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+/* Stage Duration Badge */
+.stageDuration { display: inline-flex; align-items: center; gap: 6px; margin: 0 20px 14px; width: fit-content; font-size: 12px; font-weight: 500; border-radius: 99px; padding: 4px 11px; border: 1px solid; }
+.stageDuration__today   { background: var(--bg-tertiary); color: var(--text-muted); border-color: var(--border-color); }
+.stageDuration__fresh   { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+.stageDuration__warn    { background: #fef9c3; color: #854d0e; border-color: #fde047; }
+.stageDuration__overdue { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+
 .dots { display: flex; align-items: center; padding: 0 20px 16px; }
 .dotWrap { display: flex; align-items: center; flex: 1; }
 .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid; flex-shrink: 0; transition: all 0.2s; }
