@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { X, Phone, Mail, MapPin, Building2, Wifi, CheckCircle2, XCircle, ChevronRight, FileText, ArrowRight } from 'lucide-react';
+import { X, Phone, Mail, MapPin, Building2, Wifi, CheckCircle2, XCircle, ChevronRight, FileText, ArrowRight, Clock } from 'lucide-react';
 import { Avatar, StageBadge, Button, Textarea, Select, Divider } from '../ui';
 import { getStageById, getValidNextStages, STAGES } from '../../data/stages';
-import { formatDate, formatDateTime } from '../../utils/formatDate';
+import { formatDate, formatDateTime, getDaysInStage, formatDaysInStage } from '../../utils/formatDate';
 import styles from './DetailPanel.module.css';
 
 const ICONS = {
@@ -30,6 +30,9 @@ export function DetailPanel({ enquiry, theme, onClose, onLogActivity, onCloseLos
   const allOtherStages = getValidNextStages(enquiry.stage);
   const isActive = enquiry.stage !== 'closed_won' && enquiry.stage !== 'closed_lost';
   const isOnPayment = enquiry.stage === 'payment';
+  const days = getDaysInStage(enquiry);
+  const daysLabel = formatDaysInStage(enquiry);
+  const timerVariant = days === 0 ? 'today' : days < 3 ? 'fresh' : days < 7 ? 'warn' : 'overdue';
   const c = currentStage?.color[theme] || {};
   const progress = currentStage?.step ? Math.round((currentStage.step / 8) * 100) : enquiry.stage === 'closed_won' ? 100 : 0;
 
@@ -94,6 +97,12 @@ export function DetailPanel({ enquiry, theme, onClose, onLogActivity, onCloseLos
               <span className={styles.progressLabel}>Step {currentStage?.step || '—'}/8</span>
             </div>
           )}
+        </div>
+
+        {/* Days in current stage */}
+        <div className={[styles.stageDuration, styles[`stageDuration__${timerVariant}`]].join(' ')}>
+          <Clock size={12} />
+          <span>{daysLabel} in <strong>{currentStage?.label || enquiry.stage}</strong></span>
         </div>
 
         {/* Pipeline dots */}
