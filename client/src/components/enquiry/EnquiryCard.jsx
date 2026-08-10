@@ -1,7 +1,7 @@
-import { MapPin, Phone, Building2, Calendar } from 'lucide-react';
-import { StageBadge } from '../ui';
+import { MapPin, Phone, Building2, Calendar, Hash, Clock } from 'lucide-react';
+import { Avatar, StageBadge } from '../ui';
 import { getStageById } from '../../data/stages';
-import { formatDate } from '../../utils/formatDate';
+import { formatDate, getDaysInStage, formatDaysInStage } from '../../utils/formatDate';
 import styles from './EnquiryCard.module.css';
 
 export function EnquiryCard({ enquiry, isSelected, onClick, theme }) {
@@ -9,45 +9,45 @@ export function EnquiryCard({ enquiry, isSelected, onClick, theme }) {
   if (!stage) return null;
   const c = stage.color[theme];
   const lastActivity = enquiry.activities?.[enquiry.activities.length - 1];
-  const idNum = enquiry.enquiryId ? parseInt(enquiry.enquiryId.replace('ENQ-', ''), 10) : '?';
+  const days = getDaysInStage(enquiry);
+  const daysLabel = formatDaysInStage(enquiry);
 
-  function handleClick(e) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    onClick(rect);
-  }
+  // Colour the timer badge: green <3d, amber 3-7d, red >7d
+  const timerVariant = days === 0 ? 'today' : days < 3 ? 'fresh' : days < 7 ? 'warn' : 'overdue';
 
   return (
     <div
       className={[styles.card, isSelected ? styles.selected : ''].join(' ')}
       style={{ '--card-bg': c.bg, '--card-border': c.border, '--card-dot': c.dot }}
-      onClick={handleClick}
+      onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && handleClick(e)}
+      onKeyDown={(e) => e.key === 'Enter' && onClick()}
     >
       <div className={styles.colorStrip} />
       <div className={styles.body}>
-
         <div className={styles.top}>
-          {/* ID Circle instead of avatar */}
-          <div
-            className={styles.idCircle}
-            style={{ background: c.bg, color: c.text, border: `2px solid ${c.border}` }}
-          >
-            #{idNum}
+          <div className={styles.identity}>
+            <Avatar name={enquiry.name || enquiry.company || '?'} size={38} />
+            <div className={styles.nameBlock}>
+              <div className={styles.nameRow}>
+                <span className={styles.name}>{enquiry.name || enquiry.company || 'Unnamed'}</span>
+                {enquiry.enquiryId && (
+                  <span className={styles.enqId}>
+                    <Hash size={10} />{enquiry.enquiryId.replace('ENQ-', '')}
+                  </span>
+                )}
+              </div>
+              <span className={styles.company}><Building2 size={11} />{enquiry.company || '—'}</span>
+            </div>
           </div>
-
-          <div className={styles.nameBlock}>
-            <span className={styles.name}>
-              {enquiry.name || enquiry.company || 'Unnamed'}
-            </span>
-            <span className={styles.company}>
-              <Building2 size={11} />
-              {enquiry.company || '—'}
-            </span>
-          </div>
-
           <StageBadge stage={stage} theme={theme} />
+        </div>
+
+        {/* ── Days-in-stage timer badge ── */}
+        <div className={[styles.stageDuration, styles[`stageDuration__${timerVariant}`]].join(' ')}>
+          <Clock size={11} />
+          <span>{daysLabel} in this stage</span>
         </div>
 
         <div className={styles.meta}>
